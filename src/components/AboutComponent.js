@@ -88,5 +88,4 @@ function About(props) {
         </div>
     );
 }
-
 export default About;
