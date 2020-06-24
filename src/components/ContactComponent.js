@@ -1,8 +1,60 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {Breadcrumb,BreadcrumbItem,Button, Form, FormGroup, Label, Input, Col } from 'reactstrap'
+import {Link} from "react-router-dom";
 
-function Contact(props) {
+
+class Contact extends Component  {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            firstname: '',
+            lastname: '',
+            telnum: '',
+            email: '',
+            agree: false,
+            contactType: 'Tel.',
+            message: ''
+        };
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
+    }
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleSubmit(event) {
+        console.log('Current State is: ' + JSON.stringify(this.state));
+        alert('Current State is: ' + JSON.stringify(this.state));
+        event.preventDefault();
+    }
+
+
+    render() {
+
     return(
         <div className="container">
+            <div className="row">
+                <Breadcrumb>
+                    <BreadcrumbItem>
+                        <Link to='/home'>Home</Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem active>Contact Us</BreadcrumbItem>
+                </Breadcrumb>
+                <div className="col-12">
+                    <h3>Contact Us</h3>
+                    <hr/>
+                </div>
+            </div>
             <div className="row row-content">
                 <div className="col-12">
                     <h3>Location Information</h3>
@@ -31,6 +83,7 @@ function Contact(props) {
             </div>
         </div>
     );
+    }
 }
 
 export default Contact;
