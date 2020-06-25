@@ -46,6 +46,7 @@ class CommentForm extends Component{
                                                   className="form-control"
                                                     defaultValue="1"
                                     >
+
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
