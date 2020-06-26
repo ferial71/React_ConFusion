@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Card, CardImg, CardText, CardBody, CardTitle, BreadcrumbItem, Breadcrumb, Button,
     ModalHeader, ModalBody, Label, Modal, Col, Row } from 'reactstrap';
 import {Link} from "react-router-dom";
+import {Loading} from "./LoadingComponent";
 
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
@@ -78,9 +79,9 @@ class CommentForm extends Component{
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Label htmlFor="message" md={12}>Comment</Label>
+                                <Label htmlFor="comment" md={12}>Comment</Label>
                                 <Col md={12}>
-                                    <Control.textarea model=".message" id="message" name="message"
+                                    <Control.textarea model=".comment" id="comment" name="comment"
                                                       rows="5"
                                                       className="form-control" />
                                 </Col>
@@ -141,7 +142,25 @@ function RenderComments({comments, addComment, dishId}){
 
 
     const DishDetail=(props) =>{
-        if(props.dish != null)
+    if (props.isLoading){
+        return (
+          <div className="container">
+              <div className="row">
+                  <Loading/>
+              </div>
+          </div>
+        );
+    }
+    else if (props.errMsg){
+        return (
+            <div className="container">
+                <div className="row">
+                    <h4>{props.errMsg}</h4>
+                </div>
+            </div>
+        );
+    }
+    else if(props.dish != null)
             return(
                 <div className="container">
                     <div className="row">
