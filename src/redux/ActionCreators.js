@@ -1,6 +1,7 @@
 import * as ActionTypes from './ActionTypes';
 import { DISHES } from '../shared/dishes';
 
+//action
 export const addComment = (dishId, rating, author, comment) => ({
     type: ActionTypes.ADD_COMMENT,
     payload: {
@@ -32,4 +33,4 @@ export const dishesFailed = (errmsg) => ({
 export const addDishes = (dishes) => ({
     type: ActionTypes.ADD_DISHES,
     payload: dishes
-})
+});
